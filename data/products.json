@@ -1,0 +1,22 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Headphones",
+      "image": "headphones.png",
+      "price": 11.9
+    },
+    {
+      "id": 2,
+      "name": "Radio",
+      "image": "headphones.png",
+      "price": 14.9
+    },
+    {
+      "id": 3,
+      "name": "Lamp",
+      "image": "headphones.png",
+      "price": 12.9
+    }
+  ]
+}
