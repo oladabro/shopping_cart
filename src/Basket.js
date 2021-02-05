@@ -48,13 +48,72 @@ const Basket = () => {
       });
   }, []);
 
-  console.log(error);
-  console.log(products);
-  console.log(yourCart);
-
   const disableBtn = () => {
     const btn = document.querySelector('.btn-checkout');
     btn.classList.add('hide');
+  };
+
+  const updateQty = (id, qty, method) => {
+    const newArray = yourCart.filter((el) => el.id !== id);
+
+    if (method === 'decrease') {
+      const newEl = [
+        {
+          id: id,
+          productId: id,
+          quantity: qty - 1,
+        },
+      ];
+      const newCart = [...newArray, ...newEl].sort((a, b) => {
+        return a.id - b.id;
+      });
+      setYourCart(newCart);
+    }
+    if (method === 'increase') {
+      const newEl = [
+        {
+          id: id,
+          productId: id,
+          quantity: qty + 1,
+        },
+      ];
+      const newCart = [...newArray, ...newEl].sort((a, b) => {
+        return a.id - b.id;
+      });
+      setYourCart(newCart);
+    }
+  };
+
+  const decreaseQty = (id, qty) => {
+    if (qty > 0) {
+      console.log(id, qty);
+      fetch(`${urlCart}/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          quantity: qty - 1,
+        }),
+      }).then(() => {
+        updateQty(id, qty, 'decrease');
+      });
+    }
+  };
+
+  const increaseQty = (id, qty) => {
+    console.log(id, qty);
+    fetch(`${urlCart}/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        quantity: qty + 1,
+      }),
+    }).then(() => {
+      updateQty(id, qty, 'increase');
+    });
   };
 
   return (
@@ -75,7 +134,7 @@ const Basket = () => {
               <p className='cart-header-qty'>Qty </p>
             </div>
             <>
-              {yourCart.length == 0 ? (
+              {yourCart.length === 0 ? (
                 <div className='cart-item-empty'>
                   Your shopping cart is empty
                 </div>
@@ -85,6 +144,8 @@ const Basket = () => {
                     yourCart={yourCart}
                     products={products}
                     setYourCart={setYourCart}
+                    decreaseQty={decreaseQty}
+                    increaseQty={increaseQty}
                   />
                   <div className='update-cart'>
                     <button className='btn-update-cart'>

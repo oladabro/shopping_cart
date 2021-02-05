@@ -106,8 +106,18 @@ html {
   color: gray;
   align-self: center;
 }
+.cart-product-name {
+  grid-column: 3/4;
+  color: gray;
+  align-self: center;
+}
 
 .cart-header-price {
+  grid-column: 4/5;
+  color: gray;
+  align-self: center;
+}
+.cart-product-price {
   grid-column: 4/5;
   color: gray;
   align-self: center;

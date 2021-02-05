@@ -1,10 +1,12 @@
-import { useState } from 'react';
-import { urlCart, urlProducts } from './constans';
-import useFetch from './useFetch';
+import { urlCart } from './constans';
 
-const BasketList = ({ yourCart, products: details, setYourCart }) => {
-  // const [details, setDetails] = useState(products);
-
+const BasketList = ({
+  yourCart,
+  products: details,
+  setYourCart,
+  increaseQty,
+  decreaseQty,
+}) => {
   const deleteItem = (id) => {
     console.log(id);
 
@@ -17,7 +19,7 @@ const BasketList = ({ yourCart, products: details, setYourCart }) => {
   };
 
   const displayItem = (id) => {
-    const item = details.find((el) => el.id == id);
+    const item = details.find((el) => el.id === id);
 
     return (
       <>
@@ -44,13 +46,24 @@ const BasketList = ({ yourCart, products: details, setYourCart }) => {
               src={require('./images/x-img.png').default}
               className='product-delete-btn'
               onClick={() => deleteItem(el.productId)}
+              alt='delete_btn'
             />
           </div>
           {displayItem(el.productId)}
           <div className='btn-qty-container'>
-            <button>-</button>
+            <button
+              onClick={() => decreaseQty(el.productId, el.quantity)}
+              className='btn-qty'
+            >
+              -
+            </button>
             <p className='cart-product-qty'>{el.quantity}</p>
-            <button>+</button>
+            <button
+              onClick={() => increaseQty(el.productId, el.quantity)}
+              className='btn-qty'
+            >
+              +
+            </button>
           </div>
         </div>
       ))}
