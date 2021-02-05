@@ -117,6 +117,12 @@ html {
   grid-column: 5/6;
   color: gray;
   align-self: center;
+  border: 1px solid black;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cart-empty {
@@ -181,4 +187,17 @@ html {
   justify-content: center;
   padding: 10px 15px;
   background-color: rgba(251, 251, 251, 255);
+}
+
+.btn-qty-container {
+  display: flex;
+  align-items: center;
+  border-radius: 0;
+}
+.btn-qty-container button {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

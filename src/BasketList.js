@@ -1,14 +1,15 @@
 import { useState } from 'react';
-import { urlProducts } from './constans';
-// import headphones from './images/headphones.png';
+import { urlCart, urlProducts } from './constans';
 
-const BasketList = ({ yourCart, products }) => {
-  const [details, setDetails] = useState(products);
+const BasketList = ({ yourCart, products: details }) => {
+  // const [details, setDetails] = useState(products);
 
-  console.log(products);
+  const deleteItem = (id) => {
+    console.log(id);
 
-  const deleteItem = () => {
-    console.log('chcą mnie skasować');
+    // fetch(`${urlCart}/${id}`, {
+    //   method: 'DELETE',
+    // });
   };
 
   const displayItem = (id) => {
@@ -38,11 +39,15 @@ const BasketList = ({ yourCart, products }) => {
             <img
               src={require('./images/x-img.png').default}
               className='product-delete-btn'
-              onClick={deleteItem}
+              onClick={() => deleteItem(el.productId)}
             />
           </div>
           {displayItem(el.productId)}
-          <p className='cart-product-qty'>{el.quantity}</p>
+          <div className='btn-qty-container'>
+            <button>-</button>
+            <p className='cart-product-qty'>{el.quantity}</p>
+            <button>+</button>
+          </div>
         </div>
       ))}
     </div>
