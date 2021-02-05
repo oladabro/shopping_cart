@@ -70,9 +70,9 @@ const Basket = () => {
         <>
           <div className='cart'>
             <div className='cart-header'>
-              <p className='cart-product-name'>Product Name </p>
-              <p className='cart-product-price'>Unit Price </p>
-              <p className='cart-product-qty'>Qty </p>
+              <p className='cart-header-name'>Product Name </p>
+              <p className='cart-header-price'>Unit Price </p>
+              <p className='cart-header-qty'>Qty </p>
             </div>
             <>
               {yourCart.length == 0 ? (
@@ -81,7 +81,11 @@ const Basket = () => {
                 </div>
               ) : (
                 <>
-                  <BasketList yourCart={yourCart} products={products} />
+                  <BasketList
+                    yourCart={yourCart}
+                    products={products}
+                    setYourCart={setYourCart}
+                  />
                   <div className='update-cart'>
                     <button className='btn-update-cart'>
                       Update Shopping Cart

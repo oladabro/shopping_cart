@@ -1,15 +1,19 @@
 import { useState } from 'react';
 import { urlCart, urlProducts } from './constans';
+import useFetch from './useFetch';
 
-const BasketList = ({ yourCart, products: details }) => {
+const BasketList = ({ yourCart, products: details, setYourCart }) => {
   // const [details, setDetails] = useState(products);
 
   const deleteItem = (id) => {
     console.log(id);
 
-    // fetch(`${urlCart}/${id}`, {
-    //   method: 'DELETE',
-    // });
+    fetch(`${urlCart}/${id}`, {
+      method: 'DELETE',
+    }).then(() => {
+      const updatedCart = yourCart.filter((item) => item.id !== id);
+      setYourCart(updatedCart);
+    });
   };
 
   const displayItem = (id) => {

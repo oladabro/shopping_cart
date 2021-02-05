@@ -17,6 +17,12 @@
       "name": "Lamp",
       "image": "headphones.png",
       "price": 12.9
+    },
+    {
+      "id": 4,
+      "name": "Lamp",
+      "image": "headphones.png",
+      "price": 12.9
     }
   ]
 }

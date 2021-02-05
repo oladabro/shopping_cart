@@ -101,18 +101,22 @@ html {
   padding: 20px 0;
 }
 
-.cart-product-name {
+.cart-header-name {
   grid-column: 3/4;
   color: gray;
   align-self: center;
 }
 
-.cart-product-price {
+.cart-header-price {
   grid-column: 4/5;
   color: gray;
   align-self: center;
 }
-
+.cart-header-qty {
+  grid-column: 5/6;
+  color: gray;
+  align-self: center;
+}
 .cart-product-qty {
   grid-column: 5/6;
   color: gray;
