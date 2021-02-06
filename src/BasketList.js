@@ -8,8 +8,6 @@ const BasketList = ({
   decreaseQty,
 }) => {
   const deleteItem = (id) => {
-    console.log(id);
-
     fetch(`${urlCart}/${id}`, {
       method: 'DELETE',
     }).then(() => {

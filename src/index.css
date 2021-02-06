@@ -26,7 +26,6 @@ html {
   font-weight: 500;
   color: gray;
   padding: 30px 0;
-  position: fixed;
   background-color: white;
 }
 .nav-bar h1 {
@@ -62,7 +61,6 @@ html {
   padding: 40px 25px;
   margin-bottom: 20px;
   box-shadow: 3px 4px 5px 0px rgba(119, 119, 119, 0.38);
-  margin-top: 100px;
 }
 
 .cart-header {

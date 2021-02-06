@@ -20,7 +20,7 @@ const BasketSummary = ({ yourCart, products }) => {
     });
 
     setSubtotal(result);
-  }, []);
+  }, [yourCart]);
 
   useEffect(() => {
     if (subtotal <= 100) {
