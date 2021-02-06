@@ -27,7 +27,7 @@ const BasketList = ({
           <img
             src={require(`./images/${item.image}`).default}
             alt='product_photo'
-            style={{ width: 100, height: 100 }}
+            // style={{ width: 100, height: 100 }}
             className='cart-item-img'
           />
         </div>
