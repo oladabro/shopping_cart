@@ -9,20 +9,14 @@
     {
       "id": 2,
       "name": "Radio",
-      "image": "headphones.png",
+      "image": "radio.png",
       "price": 14.9
     },
     {
       "id": 3,
       "name": "Lamp",
-      "image": "headphones.png",
-      "price": 12.9
-    },
-    {
-      "id": 4,
-      "name": "Lamp",
-      "image": "headphones.png",
-      "price": 12.9
+      "image": "lamp.png",
+      "price": 23.9
     }
   ]
 }
