@@ -1,10 +1,17 @@
 import { useEffect, useState } from 'react';
+import {
+  freeShipOrderValue,
+  freeShipping,
+  shippingValue,
+  sendOrder,
+} from './constans';
 
 const BasketSummary = ({ yourCart, products }) => {
   const [subtotal, setSubtotal] = useState(0);
   const [grandTotal, setGrandTotal] = useState(0);
   const [shippingCost, setShippingCost] = useState(0);
 
+  //set subtotal value
   useEffect(() => {
     const subtotalArray = [];
     let result = 0;
@@ -22,31 +29,48 @@ const BasketSummary = ({ yourCart, products }) => {
     setSubtotal(result);
   }, [yourCart]);
 
+  //set shipping costs and calculate grand total value
+
   useEffect(() => {
-    if (subtotal <= 100) {
-      setShippingCost(23.8);
+    if (subtotal <= freeShipOrderValue) {
+      setShippingCost(shippingValue);
     } else {
-      setShippingCost(0);
+      setShippingCost(freeShipping);
     }
     setGrandTotal(subtotal + shippingCost);
   }, [subtotal, shippingCost]);
 
+  //display shipping cost
+
   const displayShippingCost = () => {
-    if (subtotal <= 100) {
+    if (subtotal <= freeShipOrderValue) {
       return (
         <div className='cart-shipping-cost'>
-          Shipping: <span>$23.80</span>
+          Shipping: <span>${shippingValue}</span>
         </div>
       );
     }
-    if (subtotal > 100) {
+    if (subtotal > freeShipOrderValue) {
       return (
         <div className='cart-shipping-cost'>
-          Shipping: <span>$ 0</span>
+          Shipping: <span>${freeShipping}</span>
         </div>
       );
     }
   };
+
+  //send order function when clicked on proceed to checkout btn
+
+  // const sendOrder = () => {
+  //   console.log('wysyłam zamówienie');
+  //   const navBar = document.querySelector('.nav-bar');
+  //   const cart = document.querySelector('.container');
+  //   const order = document.querySelector('.order-sent');
+
+  //   navBar.classList.add('hide');
+  //   cart.classList.add('hide');
+  //   order.classList.remove('hide');
+  // };
 
   return (
     <div className='cart-summary-container'>
@@ -60,7 +84,12 @@ const BasketSummary = ({ yourCart, products }) => {
           Grand total: <span>${grandTotal.toFixed(2)}</span>
         </p>
         <div>
-          <button className='btn-checkout'>Proceed to checkout</button>
+          <button className='btn-checkout' onClick={sendOrder}>
+            Proceed to checkout
+          </button>
+          <small className='adnote'>
+            *Free shippment for order value over $100
+          </small>
         </div>
       </div>
     </div>

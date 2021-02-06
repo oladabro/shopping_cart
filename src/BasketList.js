@@ -2,11 +2,12 @@ import { urlCart } from './constans';
 
 const BasketList = ({
   yourCart,
-  products: details,
+  details,
   setYourCart,
   increaseQty,
   decreaseQty,
 }) => {
+  //delete item in database
   const deleteItem = (id) => {
     fetch(`${urlCart}/${id}`, {
       method: 'DELETE',
@@ -16,6 +17,7 @@ const BasketList = ({
     });
   };
 
+  //display item in shopping cart function
   const displayItem = (id) => {
     const item = details.find((el) => el.id === id);
 
@@ -25,7 +27,7 @@ const BasketList = ({
           <img
             src={require(`./images/${item.image}`).default}
             alt='product_photo'
-            // style={{ width: 100, height: 100 }}
+            style={{ height: 100 }}
             className='cart-item-img'
           />
         </div>

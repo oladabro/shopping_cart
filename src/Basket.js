@@ -8,7 +8,8 @@ const Basket = () => {
   const [isPending, setIsPending] = useState(true);
   const [yourCart, setYourCart] = useState(null);
   const [products, setProducts] = useState(null);
-  // const [subtotal, setSubtotal] = useState(100);
+
+  //fetching data from 2 urls
 
   useEffect(() => {
     fetch(urlCart)
@@ -49,10 +50,14 @@ const Basket = () => {
       });
   }, []);
 
+  //hide proceed to checkout btn when fetching data error occurs
+
   const disableBtn = () => {
     const btn = document.querySelector('.btn-checkout');
     btn.classList.add('hide');
   };
+
+  //update quantity in local state
 
   const updateQty = (id, qty, method) => {
     const newArray = yourCart.filter((el) => el.id !== id);
@@ -85,6 +90,8 @@ const Basket = () => {
     }
   };
 
+  //decrease quantity in database
+
   const decreaseQty = (id, qty) => {
     if (qty > 0) {
       fetch(`${urlCart}/${id}`, {
@@ -101,6 +108,8 @@ const Basket = () => {
     }
   };
 
+  //increase quantity in database
+
   const increaseQty = (id, qty) => {
     fetch(`${urlCart}/${id}`, {
       method: 'PATCH',
@@ -113,10 +122,6 @@ const Basket = () => {
     }).then(() => {
       updateQty(id, qty, 'increase');
     });
-  };
-
-  const updateCart = () => {
-    console.log('chce się uaktualnic');
   };
 
   return (
@@ -142,28 +147,17 @@ const Basket = () => {
                   Your shopping cart is empty
                 </div>
               ) : (
-                <>
-                  <BasketList
-                    yourCart={yourCart}
-                    products={products}
-                    setYourCart={setYourCart}
-                    decreaseQty={decreaseQty}
-                    increaseQty={increaseQty}
-                  />
-                  <div className='update-cart'>
-                    <button className='btn-update-cart' onClick={updateCart}>
-                      Update Shopping Cart
-                    </button>
-                  </div>
-                </>
+                <BasketList
+                  yourCart={yourCart}
+                  details={products}
+                  setYourCart={setYourCart}
+                  decreaseQty={decreaseQty}
+                  increaseQty={increaseQty}
+                />
               )}
             </>
           </div>
-          <BasketSummary
-            yourCart={yourCart}
-            products={products}
-            // subtotal={subtotal}
-          />
+          <BasketSummary yourCart={yourCart} products={products} />
         </>
       )}
     </div>
