@@ -8,6 +8,7 @@ const Basket = () => {
   const [isPending, setIsPending] = useState(true);
   const [yourCart, setYourCart] = useState(null);
   const [products, setProducts] = useState(null);
+  // const [subtotal, setSubtotal] = useState(100);
 
   useEffect(() => {
     fetch(urlCart)
@@ -86,7 +87,6 @@ const Basket = () => {
 
   const decreaseQty = (id, qty) => {
     if (qty > 0) {
-      console.log(id, qty);
       fetch(`${urlCart}/${id}`, {
         method: 'PATCH',
         headers: {
@@ -102,7 +102,6 @@ const Basket = () => {
   };
 
   const increaseQty = (id, qty) => {
-    console.log(id, qty);
     fetch(`${urlCart}/${id}`, {
       method: 'PATCH',
       headers: {
@@ -114,6 +113,10 @@ const Basket = () => {
     }).then(() => {
       updateQty(id, qty, 'increase');
     });
+  };
+
+  const updateCart = () => {
+    console.log('chce się uaktualnic');
   };
 
   return (
@@ -148,7 +151,7 @@ const Basket = () => {
                     increaseQty={increaseQty}
                   />
                   <div className='update-cart'>
-                    <button className='btn-update-cart'>
+                    <button className='btn-update-cart' onClick={updateCart}>
                       Update Shopping Cart
                     </button>
                   </div>
@@ -156,7 +159,11 @@ const Basket = () => {
               )}
             </>
           </div>
-          <BasketSummary yourCart={yourCart} products={products} />
+          <BasketSummary
+            yourCart={yourCart}
+            products={products}
+            // subtotal={subtotal}
+          />
         </>
       )}
     </div>
