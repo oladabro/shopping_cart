@@ -9,8 +9,11 @@ export const sendOrder = () => {
   const navBar = document.querySelector('.nav-bar');
   const cart = document.querySelector('.container');
   const order = document.querySelector('.order-sent');
+  const superContainer = document.querySelector('.superContainer');
+  console.log(superContainer);
 
   navBar.classList.add('hide');
   cart.classList.add('hide');
   order.classList.remove('hide');
+  superContainer.style.boxShadow = '0 0 0 white';
 };

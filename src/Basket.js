@@ -125,41 +125,43 @@ const Basket = () => {
   };
 
   return (
-    <div className='container'>
-      {error && (
-        <div>
-          {disableBtn()}
-          {error}
-        </div>
-      )}
-      {isPending && <div>Loading...</div>}
-      {yourCart && products && (
-        <>
-          <div className='cart'>
-            <div className='cart-header'>
-              <p className='cart-header-name'>Product Name </p>
-              <p className='cart-header-price'>Unit Price </p>
-              <p className='cart-header-qty'>Qty </p>
-            </div>
-            <>
-              {yourCart.length === 0 ? (
-                <div className='cart-item-empty'>
-                  Your shopping cart is empty
-                </div>
-              ) : (
-                <BasketList
-                  yourCart={yourCart}
-                  details={products}
-                  setYourCart={setYourCart}
-                  decreaseQty={decreaseQty}
-                  increaseQty={increaseQty}
-                />
-              )}
-            </>
+    <div className='superContainer'>
+      <div className='container'>
+        {error && (
+          <div>
+            {disableBtn()}
+            {error}
           </div>
-          <BasketSummary yourCart={yourCart} products={products} />
-        </>
-      )}
+        )}
+        {isPending && <div>Loading...</div>}
+        {yourCart && products && (
+          <>
+            <div className='cart'>
+              <div className='cart-header'>
+                <p className='cart-header-name'>Product Name </p>
+                <p className='cart-header-price'>Unit Price </p>
+                <p className='cart-header-qty'>Qty </p>
+              </div>
+              <>
+                {yourCart.length === 0 ? (
+                  <div className='cart-item-empty'>
+                    Your shopping cart is empty
+                  </div>
+                ) : (
+                  <BasketList
+                    yourCart={yourCart}
+                    details={products}
+                    setYourCart={setYourCart}
+                    decreaseQty={decreaseQty}
+                    increaseQty={increaseQty}
+                  />
+                )}
+              </>
+            </div>
+            <BasketSummary yourCart={yourCart} products={products} />
+          </>
+        )}
+      </div>
     </div>
   );
 };

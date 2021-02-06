@@ -12,10 +12,20 @@ html {
   box-sizing: border-box;
 }
 
+.superContainer:first-of-type {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  background-color: white;
+  box-shadow: 0px 1px 5px #00000029;
+  position: fixed;
+  top: 0;
+}
+
 .nav-bar {
   height: 100px;
   width: 90vw;
-  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -43,6 +53,7 @@ html {
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  margin-top: 120px;
 }
 
 .btn-checkout,
@@ -62,10 +73,8 @@ html {
   display: grid;
   grid-template-columns: 1fr 3fr 2fr 2fr 2.5fr;
   grid-template-rows: auto;
-  grid-template-areas: 'btn img name price qty';
   border: 1px solid #f2f2f2;
   padding: 40px 25px;
-  margin-bottom: 20px;
   box-shadow: 3px 4px 5px 0px rgba(119, 119, 119, 0.38);
 }
 
@@ -165,6 +174,7 @@ html {
 
 .cart-summary-container {
   width: 20%;
+  margin-top: 20px;
 }
 
 .cart-shipping-cost {
@@ -236,4 +246,5 @@ html {
 
 .adnote {
   color: grey;
+  padding-top: 10px;
 }
