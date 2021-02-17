@@ -1,10 +1,6 @@
 import { useEffect, useState } from 'react';
-import {
-  freeShipOrderValue,
-  freeShipping,
-  shippingValue,
-  sendOrder,
-} from './constans';
+import { Link } from 'react-router-dom';
+import { freeShipOrderValue, freeShipping, shippingValue } from './constans';
 
 const BasketSummary = ({ yourCart, products }) => {
   const [subtotal, setSubtotal] = useState(0);
@@ -71,9 +67,9 @@ const BasketSummary = ({ yourCart, products }) => {
           Grand total: <span>${grandTotal.toFixed(2)}</span>
         </p>
         <div>
-          <button className='btn-checkout' onClick={sendOrder}>
+          <Link className='btn-checkout' to='/submitted'>
             Proceed to checkout
-          </button>
+          </Link>
           <small className='adnote'>
             *Free shippment for order value over $100
           </small>

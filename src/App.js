@@ -1,14 +1,23 @@
 import Basket from './Basket';
 import NavBar from './NavBar';
-import OrderSubmited from './OrderSubmited';
+import OrderSubmitted from './OrderSubmitted';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className='App'>
-      <NavBar />
-      <Basket />
-      <OrderSubmited />
-    </div>
+    <Router>
+      <div className='App'>
+        <Switch>
+          <Route exact path='/'>
+            <NavBar />
+            <Basket />
+          </Route>
+          <Route path='/submitted'>
+            <OrderSubmitted />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
