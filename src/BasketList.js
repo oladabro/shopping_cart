@@ -18,6 +18,7 @@ const BasketList = ({
   };
 
   //display item in shopping cart function
+  
   const displayItem = (id) => {
     const item = details.find((el) => el.id === id);
 

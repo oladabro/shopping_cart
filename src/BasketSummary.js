@@ -59,19 +59,6 @@ const BasketSummary = ({ yourCart, products }) => {
     }
   };
 
-  //send order function when clicked on proceed to checkout btn
-
-  // const sendOrder = () => {
-  //   console.log('wysyłam zamówienie');
-  //   const navBar = document.querySelector('.nav-bar');
-  //   const cart = document.querySelector('.container');
-  //   const order = document.querySelector('.order-sent');
-
-  //   navBar.classList.add('hide');
-  //   cart.classList.add('hide');
-  //   order.classList.remove('hide');
-  // };
-
   return (
     <div className='cart-summary-container'>
       {displayShippingCost()}

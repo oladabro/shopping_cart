@@ -11,9 +11,11 @@ html {
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
 }
+.superContainer {
+  width: 100vw;
+}
 
 .superContainer:first-of-type {
-  width: 100vw;
   display: flex;
   justify-content: center;
   height: 100px;
@@ -48,16 +50,18 @@ html {
   font-size: 20px;
   font-weight: 400;
 }
+
 .container {
   width: 90vw;
   margin: 0 auto;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   margin-top: 120px;
 }
 
-.btn-checkout,
-.btn-update-cart {
+.btn-checkout
+/* .btn-update-cart { */ {
   background-color: black;
   font-size: 1rem;
   border: 0;
@@ -247,4 +251,19 @@ html {
 .adnote {
   color: grey;
   padding-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .cart {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .cart-summary-container {
+    width: 50%;
+    margin: 20px auto;
+  }
 }
