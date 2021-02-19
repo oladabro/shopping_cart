@@ -9,17 +9,19 @@ const Basket = () => {
   const [yourCart, setYourCart] = useState(null);
   const [products, setProducts] = useState(null);
 
+  const getData = async (uri) => {
+    const response = await fetch(uri);
+    if (!response.ok) {
+      throw new Error('fetching data error');
+    }
+    const data = await response.json();
+    return data;
+  };
+
   //fetching data from 2 urls
 
   useEffect(() => {
-    fetch(urlCart)
-      .then((res) => {
-        if (!res.ok) {
-          throw Error('fetch failure');
-        } else {
-          return res.json();
-        }
-      })
+    getData(urlCart)
       .then((data) => {
         setYourCart(data);
         setIsPending(false);
@@ -29,20 +31,10 @@ const Basket = () => {
         setError(err.message);
       });
 
-    fetch(urlProducts)
-      .then((res) => {
-        if (!res.ok) {
-          throw Error('fetch failure');
-        } else {
-          return res.json();
-        }
-      })
+    getData(urlProducts)
       .then((data) => {
         setProducts(data);
         setIsPending(false);
-        if (yourCart && products) {
-          setError(null);
-        }
       })
       .catch((err) => {
         setIsPending(false);
