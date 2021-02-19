@@ -23,7 +23,7 @@ const BasketSummary = ({ yourCart, products }) => {
     });
 
     setSubtotal(result);
-  }, [yourCart, products]);
+  }, [yourCart]);
 
   //set shipping costs and calculate grand total value
 
