@@ -5,6 +5,7 @@ import { BasketContext } from '../context/BasketContext';
 
 const BasketSummary = () => {
   const { yourCart, products } = useContext(BasketContext);
+
   const [subtotal, setSubtotal] = useState(0);
   const [grandTotal, setGrandTotal] = useState(0);
   const [shippingCost, setShippingCost] = useState(0);
