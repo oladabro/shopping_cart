@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { freeShipOrderValue, freeShipping, shippingValue } from './constans';
+import { freeShipOrderValue, freeShipping, shippingValue } from '../constans';
+import { BasketContext } from '../context/BasketContext';
 
-const BasketSummary = ({ yourCart, products }) => {
+const BasketSummary = () => {
+  const { yourCart, products } = useContext(BasketContext);
   const [subtotal, setSubtotal] = useState(0);
   const [grandTotal, setGrandTotal] = useState(0);
   const [shippingCost, setShippingCost] = useState(0);
