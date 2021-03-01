@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import BasketList from './BasketList';
-import BasketSummary from './BasketSummary';
-import { urlCart, urlProducts } from './constans';
+import React, { useState, useEffect, createContext } from 'react';
+import { urlCart, urlProducts } from '../constans';
 
-const Basket = () => {
+export const BasketContext = createContext();
+
+function BasketContextProvider(props) {
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(true);
   const [yourCart, setYourCart] = useState(null);
@@ -115,47 +115,26 @@ const Basket = () => {
       updateQty(id, qty, 'increase');
     });
   };
-
   return (
-    <div className='superContainer'>
-      <div className='container'>
-        {error && (
-          <div>
-            {disableBtn()}
-            {error}
-          </div>
-        )}
-        {isPending && <div>Loading...</div>}
-        {yourCart && products && (
-          <>
-            <div className='cart'>
-              <div className='cart-header'>
-                <p className='cart-header-name'>Product Name </p>
-                <p className='cart-header-price'>Unit Price </p>
-                <p className='cart-header-qty'>Qty </p>
-              </div>
-              <>
-                {yourCart.length === 0 ? (
-                  <div className='cart-item-empty'>
-                    Your shopping cart is empty
-                  </div>
-                ) : (
-                  <BasketList
-                    yourCart={yourCart}
-                    details={products}
-                    setYourCart={setYourCart}
-                    decreaseQty={decreaseQty}
-                    increaseQty={increaseQty}
-                  />
-                )}
-              </>
-            </div>
-            <BasketSummary yourCart={yourCart} products={products} />
-          </>
-        )}
-      </div>
-    </div>
+    <BasketContext.Provider
+      value={{
+        error,
+        setError,
+        isPending,
+        setIsPending,
+        yourCart,
+        setYourCart,
+        products,
+        setProducts,
+        disableBtn,
+        updateQty,
+        decreaseQty,
+        increaseQty,
+      }}
+    >
+      {props.children}
+    </BasketContext.Provider>
   );
-};
+}
 
-export default Basket;
+export default BasketContextProvider;
